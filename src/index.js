@@ -3,42 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore, combineReducers } from 'redux';
-import { Provider } from 'react-redux';
 
-export const increment = () => {
-  return {
-    type: 'INCREMENT',
-  };
-};
-
-export const decrement = () => {
-  return {
-    type: 'DECREMENT',
-  };
-};
-
-const counter = (state = 0, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    default:
-      return state;
-  }
-};
-
-const combReducers = combineReducers({ counter: counter });
-
-let store = createStore(combReducers);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+
       {' '}
       <App />
-    </Provider>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
