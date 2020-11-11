@@ -1,10 +1,15 @@
 import React from 'react';
 import './Main.css';
 import './Main.css';
-
-let style = {
-  background: 'linear-gradient(-135deg, #A598F9, 80%,#5F6587 20%)',
-};
+let percent = 57,
+  style = { backgroundColor: '#A598F9' };
+if (percent <= 50) {
+  let paintPercent = 90 + (180 * percent) / 50;
+  style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #5F6587 50%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
+} else {
+  let paintPercent = 90 + (180 * (percent - 50)) / 50;
+  style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #A598F9 50%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
+}
 
 const MainHeader = () => {
   return (
@@ -21,7 +26,7 @@ const MainHeader = () => {
           <div className='task_type'>Бизнес</div>
         </div>
         <div style={style} className='progress_circle'></div>
-        <div className='fullfilled_percent'>65% выполнено</div>
+        <div className='fullfilled_percent'>57% выполнено</div>
       </div>
     </header>
   );
