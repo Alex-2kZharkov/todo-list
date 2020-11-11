@@ -17,7 +17,7 @@
     text-decoration: none;
 }
 .back:hover {
-    animation: 0.8s ease-in-out arrow_fade
+    animation: 2s ease-in-out arrow_fade infinite;
 }
 @keyframes arrow_fade {
     0% {
@@ -121,7 +121,7 @@
 }
 .new_task_category_wrapper::before {
     position: absolute;
-    left: 80px;
+    left: 100px;
     top: 8px;
     content: '';
     display: block;
@@ -140,7 +140,7 @@
    transition:  0.3s ease-in-out transform,0.3s ease-in-out border-color;
     
 }
-.new_task_form_item:hover, .new_task_form_item:focus {
+.new_task_category:hover , .new_task_form_item:focus {
     border-color: #F0C453;
     transition:  ease-in-out border-color;
 }
@@ -165,7 +165,7 @@
 .times::after, .times::before {
     content: '';
     position: absolute;
-    right: 4.5px;
+    right: 5px;
     top: 12.5px;
     width: 15px;
     height: 1px;

@@ -2,8 +2,25 @@ import React from 'react';
 import './NewTask.css';
 import { Link } from 'react-router-dom';
 import logo from '../images/friends_lighter.jpg';
+import { addTask } from '../actions';
+import { useDispatch } from 'react-redux';
 
 const NewTask = () => {
+  const dispatch = useDispatch();
+
+  const onAddButtonClick = (e) => {
+    e.preventDefault();
+
+    dispatch(
+      addTask({
+        category: document.querySelector('.new_task_category').value,
+        text: document.querySelector('.new_task_text').value,
+        location: document.querySelector('.new_task_location').value,
+        date: document.querySelector('.new_task_date').value,
+      })
+    );
+  };
+
   return (
     <div className='container_new_task'>
       <div className='container_inner_new_task'>
@@ -19,7 +36,7 @@ const NewTask = () => {
         <form className='new_task_form'>
           <div className='new_task_category_wrapper'>
             <select
-              name='categories'
+              name='category'
               className='new_task_form_item new_task_category'
             >
               <option value='friends'>Друзья</option>
@@ -27,7 +44,7 @@ const NewTask = () => {
               <option value='cooking'>Пища</option>
               <option value='nature'>Природа</option>
               <option value='office'>Работа</option>
-              <option value='party'>пати</option>
+              <option value='party'>Вечеринка</option>
               <option value='shopping'>Одежда</option>
               <option value='sport'>Спорт</option>
             </select>
@@ -36,15 +53,17 @@ const NewTask = () => {
 
           <div className='new_task_text_wrapper'>
             <input
-              placeholder='Опишите Вашу задачу'
+              autoComplete='off'
+              placeholder='Опишите задачу'
               type='text'
               className='new_task_form_item new_task_text'
-              text='text'
+              name='text'
             ></input>
             <div className='times'></div>
           </div>
           <div className='new_task_location_wrapper'>
             <input
+              autoComplete='off'
               placeholder='Место'
               type='text'
               className='new_task_form_item new_task_location'
@@ -55,6 +74,7 @@ const NewTask = () => {
 
           <div className='new_task_date_wrapper'>
             <input
+              autoComplete='off'
               placeholder='Дата и время'
               type='text'
               className='new_task_form_item new_task_date'
@@ -63,7 +83,11 @@ const NewTask = () => {
             <div className='times'></div>
           </div>
 
-          <button type='button' className='add_new_task'>
+          <button
+            onClick={onAddButtonClick}
+            type='button'
+            className='add_new_task'
+          >
             Добавить Вашу задачу
           </button>
         </form>

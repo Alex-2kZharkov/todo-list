@@ -199,7 +199,13 @@
     border-radius: 50%;
     text-decoration: none;
     background-color:  #2EBAEE;
-    box-shadow: -2px 9px 40px #2EBAEE;
+    box-shadow: -2px 9px 60px #2EBAEE;
+}
+.new_task:hover {
+    box-shadow: -2px 9px 60px #2eaaee;
+    background: #2eaaee;
+    cursor: pointer;
+    transition: 0.3s ease-in-out box-shadow,0.3s ease-in-out  background, 0.3s ease-in-out cursor;
 }
 .new_task::before {
     content: '';
