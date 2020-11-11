@@ -1,6 +1,6 @@
 import React from 'react';
 import './Main.css';
-import './Main.css';
+
 let percent = 57,
   style = { backgroundColor: '#A598F9' };
 if (percent <= 50) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../images/cooking-darker.jpg';
+import logo from '../images/cooking_darker.jpg';
 
 const IncomingTask = () => {
   return (
