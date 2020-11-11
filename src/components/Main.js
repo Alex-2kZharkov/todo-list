@@ -11,6 +11,9 @@ const Main = () => {
       <MainHeader />
       <IncomingTasks />
       <FulfilledTasks />
+      <Link to='/new-task'>
+        <div className='new_task'></div>
+      </Link>
     </div>
   );
 };
