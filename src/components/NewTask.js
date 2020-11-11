@@ -1,7 +1,7 @@
 import React from 'react';
 import './NewTask.css';
 import { Link } from 'react-router-dom';
-import logo from '../images/office_lighter.jpg';
+import logo from '../images/friends_lighter.jpg';
 
 const NewTask = () => {
   return (
@@ -17,11 +17,20 @@ const NewTask = () => {
           <img src={logo} className='new_task_icon' alt='icon' />
         </div>
         <form className='new_task_form'>
-          <input
-            type='combo'
+          <select
+            name='categories'
             className='new_task_form_item new_task_category'
-            name='category'
-          ></input>
+          >
+            <option value='friends'>Друзья</option>
+            <option value='music'>Музыка</option>
+            <option value='cooking'>Пища</option>
+            <option value='nature'>Природа</option>
+            <option value='office'>Работа</option>
+            <option value='party'>пати</option>
+            <option value='shopping'>Одежда</option>
+            <option value='sport'>Спорт</option>
+          </select>
+
           <input
             placeholder='Опишите Вашу задачу'
             type='text'
@@ -40,6 +49,9 @@ const NewTask = () => {
             className='new_task_form_item new_task_date'
             name='date'
           ></input>
+          <button type='button' className='add_new_task'>
+            Добавить Вашу задачу
+          </button>
         </form>
       </div>
     </div>
