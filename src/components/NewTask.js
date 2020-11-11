@@ -17,19 +17,22 @@ const NewTask = () => {
           <img src={logo} className='new_task_icon' alt='icon' />
         </div>
         <form className='new_task_form'>
-          <select
-            name='categories'
-            className='new_task_form_item new_task_category'
-          >
-            <option value='friends'>Друзья</option>
-            <option value='music'>Музыка</option>
-            <option value='cooking'>Пища</option>
-            <option value='nature'>Природа</option>
-            <option value='office'>Работа</option>
-            <option value='party'>пати</option>
-            <option value='shopping'>Одежда</option>
-            <option value='sport'>Спорт</option>
-          </select>
+          <div className='new_task_category_wrapper'>
+            <select
+              name='categories'
+              className='new_task_form_item new_task_category'
+            >
+              <option value='friends'>Друзья</option>
+              <option value='music'>Музыка</option>
+              <option value='cooking'>Пища</option>
+              <option value='nature'>Природа</option>
+              <option value='office'>Работа</option>
+              <option value='party'>пати</option>
+              <option value='shopping'>Одежда</option>
+              <option value='sport'>Спорт</option>
+            </select>
+            <div className='select_arrow'></div>
+          </div>
 
           <input
             placeholder='Опишите Вашу задачу'

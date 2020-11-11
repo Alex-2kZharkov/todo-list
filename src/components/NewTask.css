@@ -71,14 +71,53 @@
     display: block;
     width: 100%;
     padding: 0;
+    padding-bottom: 12px;
     border: 0;
+    border-bottom: solid 1px #6D73AD;
     margin-bottom: 50px;
     font-size: 18px;
-    
+    background-color: transparent;
+    color: #ffffff;
+}
+.new_task_form_item:focus {
+    outline: none;
+}
+.new_task_category_wrapper {
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+}
+.new_task_category {
+    -webkit-appearance: none;
+   -moz-appearance: none;
+   cursor: pointer;
+}
+.select_arrow {
+    position: absolute;
+    right: 0px;
+    top: 12px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #6D73AD;
+    transform: rotate(180deg);
+    pointer-events: none;
 }
 .new_task_form_item::placeholder {
     color: #6D73AD;
 }
+.new_task_category_wrapper:hover .select_arrow{
+   transform: rotate(540deg);
+   border-bottom-color: #F0C453; 
+   transition:  0.3s ease-in-out transform,0.3s ease-in-out border-color;
+    
+}
+.new_task_form_item:hover{
+    border-color: #F0C453;
+    transition:  ease-in-out border-color;
+}
+
 .new_task_form_item:nth-child(4) {
     margin-bottom: 30px;
 }
