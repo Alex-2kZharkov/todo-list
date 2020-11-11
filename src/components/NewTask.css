@@ -16,10 +16,24 @@
     top: 50px;
     text-decoration: none;
 }
+.back:hover {
+    animation: 0.8s ease-in-out arrow_fade
+}
+@keyframes arrow_fade {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .central_line {
     position: absolute;
     width: 50px;
-    height: 2px;
+    height: 3px;
     background-color: #2EBAEE;
 }
 .central_line::before {
@@ -28,7 +42,7 @@
     left: -3px;
     content: '';
     width: 25px;
-    height: 2px;
+    height: 3px;
     transform: rotate(-40deg);
     background-color: #2EBAEE;
 }
@@ -38,7 +52,7 @@
     left: -2px;
     content: '';
     width: 25px;
-    height: 2px;
+    height: 3px;
     transform: rotate(40deg);
     background-color: #2EBAEE;
 }
@@ -68,6 +82,7 @@
     margin-right: 48px;
 }
 .new_task_form_item {
+   
     display: block;
     width: 100%;
     padding: 0;
@@ -104,6 +119,18 @@
     transform: rotate(180deg);
     pointer-events: none;
 }
+.new_task_category_wrapper::before {
+    position: absolute;
+    left: 80px;
+    top: 8px;
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #F0C453;
+}
+
 .new_task_form_item::placeholder {
     color: #6D73AD;
 }
@@ -113,13 +140,54 @@
    transition:  0.3s ease-in-out transform,0.3s ease-in-out border-color;
     
 }
-.new_task_form_item:hover{
+.new_task_form_item:hover, .new_task_form_item:focus {
     border-color: #F0C453;
     transition:  ease-in-out border-color;
 }
 
 .new_task_form_item:nth-child(4) {
     margin-bottom: 30px;
+}
+.new_task_text_wrapper, .new_task_location_wrapper, .new_task_date_wrapper {
+    position: relative;
+}
+.times {
+    display: none;
+    position: absolute;
+    right: -1.5px;
+    top: 0px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: #6D73AD;
+}
+.times::after, .times::before {
+    content: '';
+    position: absolute;
+    right: 4.5px;
+    top: 12.5px;
+    width: 15px;
+    height: 1px;
+    background: #ffffff;
+}
+.times::after {
+    transform: rotate(45deg);
+}
+.times::before {
+    transform: rotate(-45deg);
+}
+.new_task_text:focus + .times{
+    display: block;
+  
+}
+.new_task_location:focus + .times{
+    display: block;
+  
+}
+.new_task_date:focus + .times{
+    display: block;
+  
 }
 .add_new_task {
     padding: 35px 165px;
@@ -135,4 +203,10 @@
     text-align: center;
     color: #ffffff;
     background-color: #2EBAEE;
+}
+.add_new_task:hover {
+    box-shadow: -2px 9px 30px #2eaaee;
+    background: #2eaaee;
+    cursor: pointer;
+    transition: 0.3s ease-in-out box-shadow,0.3s ease-in-out  background, 0.3s ease-in-out cursor;
 }

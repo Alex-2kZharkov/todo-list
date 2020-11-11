@@ -34,24 +34,35 @@ const NewTask = () => {
             <div className='select_arrow'></div>
           </div>
 
-          <input
-            placeholder='Опишите Вашу задачу'
-            type='text'
-            className='new_task_form_item new_task_text'
-            text='text'
-          ></input>
-          <input
-            placeholder='Место'
-            type='text'
-            className='new_task_form_item new_task_location'
-            name='location'
-          ></input>
-          <input
-            placeholder='Дата и время'
-            type='text'
-            className='new_task_form_item new_task_date'
-            name='date'
-          ></input>
+          <div className='new_task_text_wrapper'>
+            <input
+              placeholder='Опишите Вашу задачу'
+              type='text'
+              className='new_task_form_item new_task_text'
+              text='text'
+            ></input>
+            <div className='times'></div>
+          </div>
+          <div className='new_task_location_wrapper'>
+            <input
+              placeholder='Место'
+              type='text'
+              className='new_task_form_item new_task_location'
+              name='location'
+            ></input>
+            <div className='times'></div>
+          </div>
+
+          <div className='new_task_date_wrapper'>
+            <input
+              placeholder='Дата и время'
+              type='text'
+              className='new_task_form_item new_task_date'
+              name='date'
+            ></input>
+            <div className='times'></div>
+          </div>
+
           <button type='button' className='add_new_task'>
             Добавить Вашу задачу
           </button>
