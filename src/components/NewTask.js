@@ -1,74 +1,48 @@
-import React from 'react';
+import {React, useState} from 'react';
 import './NewTask.css';
 import { Link } from 'react-router-dom';
-import logo from '../images/friends_lighter.jpg';
 import { addTask } from '../actions';
-import { connect } from 'react-redux';
-import {
-  updateTaskCategory,
-  updateTaskText,
-  updateTaskLocation,
-  updateTaskDate,
-} from '../actions/fields';
+import { useSelector, useDispatch } from 'react-redux';
 
-const mapStateToProps = (state) => {
-  return {
-    taskCategory: state.taskCategory,
-    taskText: state.taskText,
-    taskLocation: state.taskLocation,
-    taskDate: state.taskDate,
-  };
-};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addTask: (taskInfo) => dispatch(addTask(taskInfo)),
-    updateTaskCategory: (category) => dispatch(updateTaskCategory(category)),
-    updateTaskText: (text) => dispatch(updateTaskText(text)),
-    updateTaskLocation: (location) => dispatch(updateTaskLocation(location)),
-    updateTaskDate: (date) => dispatch(updateTaskDate(date)),
-  };
-};
+const NewTask = () => {
+    const [taskCategory, updateTaskCategory] = useState(), [taskText, updateTaskText] = useState(), [taskLocation, updateTaskLocation] = useState(),[taskDate, updateTaskDate] = useState();
+  
+    const onCategoryChange = () => {
+      updateTaskCategory(this.category.current.value);
+    };
+    
+    const onTextChange = (isClear = false) => {
+      if(isClear) {
+        this.text.current.value = ''
+      }  
+      updateTaskText(this.text.current.value);
+    };
+    
+    const onLocationChange = (isClear = false) => {
+       if(isClear) {
+        this.location.current.value = ''
+      } 
+      updateTaskLocation(this.location.current.value);
+    };
+    
+    const onDateChange = (isClear = false) => {
+       if(isClear) {
+        this.date.current.value = ''
+      } 
+      updateTaskDate(this.date.current.value);
+      
+    };
+    const onAddButtonClick = (e) => {
+      e.preventDefault();
+      this.props.addTask({
+        category: this.category.current.value,
+        text: this.text.current.value,
+        location: this.location.current.value,
+        date: this.date.current.value,
+      });
+    };
 
-class NewTask extends React.Component {
-  constructor(props) {
-    super(props);
-    this.category = React.createRef();
-    this.text = React.createRef();
-    this.location = React.createRef();
-    this.date = React.createRef();
-  }
-
-  onAddButtonClick = (e) => {
-    e.preventDefault();
-    this.props.addTask({
-      category: this.category.current.value,
-      text: this.text.current.value,
-      location: this.location.current.value,
-      date: this.date.current.value,
-    });
-  };
-
-  onCategoryChange = (e) => {
-    this.props.updateTaskCategory(this.category.current.value);
-  };
-
-  onTextChange = (e) => {
-    this.props.updateTaskText(this.text.current.value);
-  };
-
-  onLocationChange = (e) => {
-    this.props.updateTaskLocation(this.location.current.value);
-  };
-
-  onDateChange = (e) => {
-    this.props.updateTaskDate(this.date.current.value);
-  };
-
-  componentDidMount() {
-    this.onCategoryChange(); // cause value at select alredy there and we have to update state
-  }
-  render() {
     return (
       <div className='container_new_task'>
         <div className='container_inner_new_task'>
@@ -79,7 +53,7 @@ class NewTask extends React.Component {
             <div className='page_title'>Добавить новую задачу</div>
           </div>
           <div className='new_task_icon_container'>
-            <img src={logo} className='new_task_icon' alt='icon' />
+            <img src={process.env.PUBLIC_URL + '/images/cooking_lighter.jpg'} className='new_task_icon' alt='icon' />
           </div>
           <form className='new_task_form'>
             <div className='new_task_category_wrapper'>
@@ -150,7 +124,7 @@ class NewTask extends React.Component {
         </div>
       </div>
     );
-  }
+  
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewTask);
+export default NewTask;

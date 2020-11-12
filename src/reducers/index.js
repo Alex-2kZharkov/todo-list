@@ -17,7 +17,7 @@ export const tasks = (
         state = startTask;
       } else {
         state.push({
-          id: state.length + 1,
+          id: Number(state[state.length-1].id) + 1,
           category: action.payload.category,
           location: action.payload.location,
           text: action.payload.text,
