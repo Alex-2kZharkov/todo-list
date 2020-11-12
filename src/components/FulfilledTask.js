@@ -1,16 +1,16 @@
 import React from 'react';
-import logo from '../images/cooking_darker.jpg';
+//import logo from '../../public/images/party_darker.jpg';
 
 const FulfilledTask = () => {
   return (
     <div className='task'>
       <div className='task-icon-container task-icon-container-modificator'>
         <div className='task_icon_inner_container'>
-          <img
+          {/* <img
             src={logo}
             className='task_icon task_icon_modificator'
             alt='icon'
-          />
+          /> */}
         </div>
       </div>
       <div className='task_information'>

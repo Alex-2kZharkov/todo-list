@@ -151,7 +151,7 @@
 .new_task_text_wrapper, .new_task_location_wrapper, .new_task_date_wrapper {
     position: relative;
 }
-.times {
+.times{
     display: none;
     position: absolute;
     right: -1.5px;
@@ -161,6 +161,10 @@
     cursor: pointer;
     border-radius: 50%;
     background: #6D73AD;
+}
+.times:hover {
+    background: #F0C453;
+    transition:  ease-in-out background;
 }
 .times::after, .times::before {
     content: '';

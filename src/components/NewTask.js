@@ -1,47 +1,43 @@
 import {React, useState} from 'react';
 import './NewTask.css';
 import { Link } from 'react-router-dom';
-import { addTask } from '../actions';
-import { useSelector, useDispatch } from 'react-redux';
+//import { addTask } from '../actions';
+//import { useSelector, useDispatch } from 'react-redux';
 
 
 const NewTask = () => {
-    const [taskCategory, updateTaskCategory] = useState(), [taskText, updateTaskText] = useState(), [taskLocation, updateTaskLocation] = useState(),[taskDate, updateTaskDate] = useState();
+    const [taskCategory, updateTaskCategory] = useState('friends'), [taskText, updateTaskText] = useState(''), [taskLocation, updateTaskLocation] = useState(''),[taskDate, updateTaskDate] = useState('');
   
-    const onCategoryChange = () => {
-      updateTaskCategory(this.category.current.value);
+    
+    const onCategoryChange = (e) => {
+      updateTaskCategory(e.target.value);
     };
     
-    const onTextChange = (isClear = false) => {
-      if(isClear) {
-        this.text.current.value = ''
-      }  
-      updateTaskText(this.text.current.value);
+    const onTextChange = (e,isClear) => {
+      isClear ? updateTaskText('') : updateTaskText(e.target.value);
     };
     
-    const onLocationChange = (isClear = false) => {
-       if(isClear) {
-        this.location.current.value = ''
-      } 
-      updateTaskLocation(this.location.current.value);
+    const onLocationChange = (e,isClear = false) => {
+      isClear ? updateTaskLocation('') : updateTaskLocation(e.target.value);
     };
     
-    const onDateChange = (isClear = false) => {
-       if(isClear) {
-        this.date.current.value = ''
-      } 
-      updateTaskDate(this.date.current.value);
-      
+    const onDateChange = (e,isClear = false) => {
+      isClear ? updateTaskDate('') : updateTaskDate(e.target.value); 
+
     };
     const onAddButtonClick = (e) => {
       e.preventDefault();
-      this.props.addTask({
-        category: this.category.current.value,
-        text: this.text.current.value,
-        location: this.location.current.value,
-        date: this.date.current.value,
-      });
+      // this.props.addTask({
+      //   category: this.category.current.value,
+      //   text: this.text.current.value,
+      //   location: this.location.current.value,
+      //   date: this.date.current.value,
+      // });
     };
+    let textShow = {}, locationShow = {}, dateShow = {};
+    taskText ? textShow = {display: 'block'} : textShow = {display: 'none'};
+    taskLocation ? locationShow = {display: 'block'} : locationShow = {display: 'none'};
+    taskDate ? dateShow = {display: 'block'} : dateShow = {display: 'none'};
 
     return (
       <div className='container_new_task'>
@@ -60,8 +56,8 @@ const NewTask = () => {
               <select
                 name='category'
                 className='new_task_form_item new_task_category'
-                ref={this.category}
-                onChange={this.onCategoryChange}
+                value={taskCategory}
+                onChange={onCategoryChange}
               >
                 <option value='friends'>Друзья</option>
                 <option value='music'>Музыка</option>
@@ -82,10 +78,10 @@ const NewTask = () => {
                 type='text'
                 className='new_task_form_item new_task_text'
                 name='text'
-                ref={this.text}
-                onChange={this.onTextChange}
+                value={taskText}
+                onChange={onTextChange}
               ></input>
-              <div className='times'></div>
+              <div style={textShow} className='times' onClick={(e) => onTextChange(e, true)}></div>
             </div>
             <div className='new_task_location_wrapper'>
               <input
@@ -94,27 +90,26 @@ const NewTask = () => {
                 type='text'
                 className='new_task_form_item new_task_location'
                 name='location'
-                ref={this.location}
-                onChange={this.onLocationChange}
+                value={taskLocation}
+                onChange={onLocationChange}
               ></input>
-              <div className='times'></div>
+              <div style={locationShow} className='times' onClick={(e) => onLocationChange(e, true)}></div>
             </div>
 
             <div className='new_task_date_wrapper'>
               <input
                 autoComplete='off'
-                placeholder='Дата и время'
+                placeholder='Дата и время, например, 21 октября 2020 13:00'
                 type='text'
                 className='new_task_form_item new_task_date'
-                name='date'
-                ref={this.date}
-                onChange={this.onDateChange}
+                value={taskDate}
+                onChange={onDateChange}
               ></input>
-              <div className='times'></div>
+              <div style={dateShow} className='times' onClick={(e) => onDateChange(e, true)}></div>
             </div>
 
             <button
-              onClick={this.onAddButtonClick}
+              onClick={onAddButtonClick}
               type='button'
               className='add_new_task'
             >
