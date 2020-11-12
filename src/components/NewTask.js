@@ -104,7 +104,7 @@ const NewTask = () => {
             <div className='new_task_date_wrapper'>
               <input
                 autoComplete='off'
-                placeholder='Дата и время, например, 21 октября 2020 13:00'
+                placeholder='Дата и время, например, dd-mm-yy hh:mm'
                 type='text'
                 className='new_task_form_item new_task_date'
                 value={taskDate}

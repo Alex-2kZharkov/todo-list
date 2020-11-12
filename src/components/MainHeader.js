@@ -19,12 +19,15 @@ const MainHeader = (props) => {
     let paintPercent = 90 + (180 * (percent - 50)) / 50;
     style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #A598F9 50%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
   }
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hours: 'numeric', minutes: 'numeric'};
+  let dateStr = new Date().toLocaleDateString('ru', options);
+  dateStr = dateStr[0].toLocaleUpperCase('ru') + dateStr.slice(1);
 
   return (
     <header className='container_inner'>
       <div className='title_column'>
         <div className='title'>Ваши задачи</div>
-        <div className='today_date'>{new Date().toDateString()}</div>
+        <div className='today_date'>{dateStr}</div>
       </div>
       <div className='statistics_column'>
         <div className='tasks_types'>
