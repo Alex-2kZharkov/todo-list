@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 const NewTask = () => {
-    const [taskCategory, updateTaskCategory] = useState('friends'), [taskText, updateTaskText] = useState(''), [taskLocation, updateTaskLocation] = useState(''),[taskDate, updateTaskDate] = useState('');
+    const [taskCategory, updateTaskCategory] = useState('home'), [taskText, updateTaskText] = useState(''), [taskLocation, updateTaskLocation] = useState(''),[taskDate, updateTaskDate] = useState('');
   
     
     const onCategoryChange = (e) => {
@@ -27,12 +27,12 @@ const NewTask = () => {
     };
     const onAddButtonClick = (e) => {
       e.preventDefault();
-      // this.props.addTask({
-      //   category: this.category.current.value,
-      //   text: this.text.current.value,
-      //   location: this.location.current.value,
-      //   date: this.date.current.value,
-      // });
+      this.props.addTask({
+        category: taskCategory,
+        text: taskText,
+        location: taskLocation,
+        date: taskDate,
+      });
     };
     let textShow = {}, locationShow = {}, dateShow = {};
     taskText ? textShow = {display: 'block'} : textShow = {display: 'none'};
@@ -49,7 +49,7 @@ const NewTask = () => {
             <div className='page_title'>Добавить новую задачу</div>
           </div>
           <div className='new_task_icon_container'>
-            <img src={process.env.PUBLIC_URL + '/images/cooking_lighter.jpg'} className='new_task_icon' alt='icon' />
+            <img src={process.env.PUBLIC_URL + `/images/${taskCategory}_lighter.jpg`} className='new_task_icon' alt='icon' />
           </div>
           <form className='new_task_form'>
             <div className='new_task_category_wrapper'>
@@ -59,6 +59,7 @@ const NewTask = () => {
                 value={taskCategory}
                 onChange={onCategoryChange}
               >
+                <option value='home'>Дом</option>
                 <option value='friends'>Друзья</option>
                 <option value='music'>Музыка</option>
                 <option value='cooking'>Пища</option>
