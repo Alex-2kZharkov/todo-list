@@ -4,6 +4,7 @@ export const addTask = (taskInfo) => {
     payload: taskInfo,
   };
 };
+
 export const removeTask = (id) => {
   return {
     type: 'REMOVE_TASK',
@@ -12,12 +13,14 @@ export const removeTask = (id) => {
     },
   };
 };
+
 export const updateTask = (taskInfo) => {
   return {
     type: 'UPDATE_TASK',
     payload: taskInfo,
   };
 };
+
 export const markAsDone = (id) => {
   return {
     type: 'MARK_TASK_AS_DONE',
@@ -26,3 +29,5 @@ export const markAsDone = (id) => {
     },
   };
 };
+
+

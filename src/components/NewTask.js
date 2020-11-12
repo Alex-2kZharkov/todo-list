@@ -4,10 +4,29 @@ import { Link } from 'react-router-dom';
 import logo from '../images/friends_lighter.jpg';
 import { addTask } from '../actions';
 import { connect } from 'react-redux';
+import {
+  updateTaskCategory,
+  updateTaskText,
+  updateTaskLocation,
+  updateTaskDate,
+} from '../actions/fields';
+
+const mapStateToProps = (state) => {
+  return {
+    taskCategory: state.taskCategory,
+    taskText: state.taskText,
+    taskLocation: state.taskLocation,
+    taskDate: state.taskDate,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addTask: (taskInfo) => dispatch(addTask(taskInfo)),
+    updateTaskCategory: (category) => dispatch(updateTaskCategory(category)),
+    updateTaskText: (text) => dispatch(updateTaskText(text)),
+    updateTaskLocation: (location) => dispatch(updateTaskLocation(location)),
+    updateTaskDate: (date) => dispatch(updateTaskDate(date)),
   };
 };
 
@@ -22,12 +41,6 @@ class NewTask extends React.Component {
 
   onAddButtonClick = (e) => {
     e.preventDefault();
-    console.log(
-      this.category.current.value,
-      this.text.current.value,
-      this.location.current.value,
-      this.date.current.value
-    );
     this.props.addTask({
       category: this.category.current.value,
       text: this.text.current.value,
@@ -36,6 +49,25 @@ class NewTask extends React.Component {
     });
   };
 
+  onCategoryChange = (e) => {
+    this.props.updateTaskCategory(this.category.current.value);
+  };
+
+  onTextChange = (e) => {
+    this.props.updateTaskText(this.text.current.value);
+  };
+
+  onLocationChange = (e) => {
+    this.props.updateTaskLocation(this.location.current.value);
+  };
+
+  onDateChange = (e) => {
+    this.props.updateTaskDate(this.date.current.value);
+  };
+
+  componentDidMount() {
+    this.onCategoryChange(); // cause value at select alredy there and we have to update state
+  }
   render() {
     return (
       <div className='container_new_task'>
@@ -55,6 +87,7 @@ class NewTask extends React.Component {
                 name='category'
                 className='new_task_form_item new_task_category'
                 ref={this.category}
+                onChange={this.onCategoryChange}
               >
                 <option value='friends'>Друзья</option>
                 <option value='music'>Музыка</option>
@@ -76,6 +109,7 @@ class NewTask extends React.Component {
                 className='new_task_form_item new_task_text'
                 name='text'
                 ref={this.text}
+                onChange={this.onTextChange}
               ></input>
               <div className='times'></div>
             </div>
@@ -87,6 +121,7 @@ class NewTask extends React.Component {
                 className='new_task_form_item new_task_location'
                 name='location'
                 ref={this.location}
+                onChange={this.onLocationChange}
               ></input>
               <div className='times'></div>
             </div>
@@ -99,6 +134,7 @@ class NewTask extends React.Component {
                 className='new_task_form_item new_task_date'
                 name='date'
                 ref={this.date}
+                onChange={this.onDateChange}
               ></input>
               <div className='times'></div>
             </div>
@@ -117,4 +153,4 @@ class NewTask extends React.Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(NewTask);
+export default connect(mapStateToProps, mapDispatchToProps)(NewTask);
