@@ -12,12 +12,12 @@
     background: url('../images/background.jpg');
     background-size: 100% 100%;
 }
-.title_column::after {
+.progress_bar {
     content: "";
     display: block;
     position: absolute;
     bottom: 0;
-    width: 100%;
+    left: 0;
     height: 5px;
     background: linear-gradient(to right,#A598F9 60%, #2EBAEE)
 

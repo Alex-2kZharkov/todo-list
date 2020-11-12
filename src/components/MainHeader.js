@@ -1,18 +1,25 @@
 import React from 'react';
-import {} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {countFulfilledPercent} from '../actions/countFulfilledPercent'
 import './Main.css';
 
-let percent = 57,
-  style = { backgroundColor: '#A598F9' };
-if (percent <= 50) {
-  let paintPercent = 90 + (180 * percent) / 50;
-  style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #5F6587 50%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
-} else {
-  let paintPercent = 90 + (180 * (percent - 50)) / 50;
-  style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #A598F9 50%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
-}
 
-const MainHeader = () => {
+  
+const MainHeader = (props) => {
+  const dispatch = useDispatch();
+  dispatch(countFulfilledPercent(props.tasks));
+
+  const percent = useSelector(state => state.fulfilledPercent)
+
+  let style = { backgroundColor: '#A598F9' };
+  if (percent <= 50) {
+    let paintPercent = 90 + (180 * percent) / 50;
+    style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #5F6587 50%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
+  } else {
+    let paintPercent = 90 + (180 * (percent - 50)) / 50;
+    style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #A598F9 50%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
+  }
+
   return (
     <header className='container_inner'>
       <div className='title_column'>
@@ -27,8 +34,10 @@ const MainHeader = () => {
           <div className='task_type'>Бизнес</div>
         </div>
         <div style={style} className='progress_circle'></div>
-        <div className='fullfilled_percent'>57% выполнено</div>
+        <div className='fullfilled_percent'>{percent}% выполнено</div>
+        
       </div>
+      <div style={{width: `${percent}%`}} className='progress_bar'></div>
     </header>
   );
 };
