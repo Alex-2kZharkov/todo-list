@@ -2,7 +2,7 @@ import {React, useState} from 'react';
 import './NewTask.css';
 import { Link, useHistory } from 'react-router-dom';
 import { addTask } from '../actions';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 
 const NewTask = () => {

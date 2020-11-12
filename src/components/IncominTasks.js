@@ -1,11 +1,8 @@
 import React from 'react';
 import IncomingTask from './IncomingTask';
-import {useDispatch, useSelector} from 'react-redux';
-import {countIncomingTasks} from '../actions/countStat'
 import './Main.css';
 
 const IncomingTasks = (props) => {
-  const dispatch = useDispatch();
  
   return (
     <div className='incoming-tasks-container'>

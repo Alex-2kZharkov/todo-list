@@ -1,14 +1,10 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {countFulfilledPercent, countIncomingTasks} from '../actions/countStat'
 import './Main.css';
 
-
-  
 const MainHeader = (props) => {
 
-
   let style = { backgroundColor: '#A598F9' };
+
   if (props.percent <= 50) {
     let paintPercent = 90 + (180 * props.percent) / 50;
     style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #5F6587 50%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
@@ -16,6 +12,7 @@ const MainHeader = (props) => {
     let paintPercent = 90 + (180 * (props.percent - 50)) / 50;
     style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #A598F9 50%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
   }
+
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hours: 'numeric', minutes: 'numeric'};
   let dateStr = new Date().toLocaleDateString('ru', options);
   dateStr = dateStr[0].toLocaleUpperCase('ru') + dateStr.slice(1);
@@ -28,8 +25,8 @@ const MainHeader = (props) => {
       </div>
       <div className='statistics_column'>
         <div className='tasks_types'>
-          <div className='tasks_nr'>24</div>
-          <div className='tasks_nr'>15</div>
+          <div className='tasks_nr'>{props.personal}</div>
+          <div className='tasks_nr'>{props.business}</div>
           <div className='task_type'>Личные</div>
           <div className='task_type'>Бизнес</div>
         </div>
