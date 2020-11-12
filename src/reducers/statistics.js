@@ -9,5 +9,15 @@ export const fulfilledPercent = (state = 0, action) => {
         }
         default: return state;
     }
+}
 
+export const incomingNumber = (state = 0, action) => {
+
+    switch(action.type) {
+        case 'COUNT_INCOMING': {
+            state = action.payload.reduce((accumulator, current) => current.isDone ? accumulator : ++accumulator, 0);
+            return state;
+        }
+        default: return state;
+    }
 }

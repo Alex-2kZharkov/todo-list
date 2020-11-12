@@ -2,14 +2,14 @@ import React from 'react';
 import FulfilledTask from './FulfilledTask';
 import './Main.css';
 
-const FulfilledTasks = () => {
+const FulfilledTasks = (props) => {
   return (
     <div className='incoming-tasks-container'>
       <div className='fulfilled-tasks-container'>
         <div className='tasks-title fulfilled-tasks-container-title'>
-          Завершенные
+          Выполненные
         </div>
-        <div className='fulfilled-tasks-container-quantity'>1</div>
+        <div className='fulfilled-tasks-container-quantity'>{props.fulfilled}</div>
       </div>
       <div className='inner-container'>
         <FulfilledTask />

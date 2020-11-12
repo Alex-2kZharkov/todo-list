@@ -1,22 +1,19 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {countFulfilledPercent} from '../actions/countFulfilledPercent'
+import {countFulfilledPercent, countIncomingTasks} from '../actions/countStat'
 import './Main.css';
 
 
   
 const MainHeader = (props) => {
-  const dispatch = useDispatch();
-  dispatch(countFulfilledPercent(props.tasks));
 
-  const percent = useSelector(state => state.fulfilledPercent)
 
   let style = { backgroundColor: '#A598F9' };
-  if (percent <= 50) {
-    let paintPercent = 90 + (180 * percent) / 50;
+  if (props.percent <= 50) {
+    let paintPercent = 90 + (180 * props.percent) / 50;
     style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #5F6587 50%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
   } else {
-    let paintPercent = 90 + (180 * (percent - 50)) / 50;
+    let paintPercent = 90 + (180 * (props.percent - 50)) / 50;
     style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #A598F9 50%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
   }
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hours: 'numeric', minutes: 'numeric'};
@@ -37,10 +34,10 @@ const MainHeader = (props) => {
           <div className='task_type'>Бизнес</div>
         </div>
         <div style={style} className='progress_circle'></div>
-        <div className='fullfilled_percent'>{percent}% выполнено</div>
+        <div className='fullfilled_percent'>{props.percent}% выполнено</div>
         
       </div>
-      <div style={{width: `${percent}%`}} className='progress_bar'></div>
+      <div style={{width: `${props.percent}%`}} className='progress_bar'></div>
     </header>
   );
 };
