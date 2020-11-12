@@ -1,4 +1,5 @@
 import React from 'react';
+import {} from 'react-redux';
 import './Main.css';
 
 let percent = 57,

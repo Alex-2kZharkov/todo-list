@@ -1,19 +1,20 @@
 import {React, useState} from 'react';
 import './NewTask.css';
-import { Link } from 'react-router-dom';
-//import { addTask } from '../actions';
-//import { useSelector, useDispatch } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { addTask } from '../actions';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 const NewTask = () => {
     const [taskCategory, updateTaskCategory] = useState('home'), [taskText, updateTaskText] = useState(''), [taskLocation, updateTaskLocation] = useState(''),[taskDate, updateTaskDate] = useState('');
-  
+    const dispatch = useDispatch();
+    const history = useHistory();
     
     const onCategoryChange = (e) => {
       updateTaskCategory(e.target.value);
     };
     
-    const onTextChange = (e,isClear) => {
+    const onTextChange = (e,isClear = false) => {
       isClear ? updateTaskText('') : updateTaskText(e.target.value);
     };
     
@@ -26,13 +27,16 @@ const NewTask = () => {
 
     };
     const onAddButtonClick = (e) => {
+      console.log(e);
       e.preventDefault();
-      this.props.addTask({
+      dispatch(addTask({
         category: taskCategory,
         text: taskText,
         location: taskLocation,
         date: taskDate,
-      });
+      }));
+      history.replace(e.target.pathname); // added task and went back to main page
+
     };
     let textShow = {}, locationShow = {}, dateShow = {};
     taskText ? textShow = {display: 'block'} : textShow = {display: 'none'};
@@ -109,13 +113,14 @@ const NewTask = () => {
               <div style={dateShow} className='times' onClick={(e) => onDateChange(e, true)}></div>
             </div>
 
-            <button
+            <Link
+              to='/'
               onClick={onAddButtonClick}
               type='button'
               className='add_new_task'
             >
               Добавить Вашу задачу
-            </button>
+            </Link>
           </form>
         </div>
       </div>
