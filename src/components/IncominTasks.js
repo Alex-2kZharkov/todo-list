@@ -4,6 +4,12 @@ import './Main.css';
 
 const IncomingTasks = (props) => {
  
+  console.log(props.tasks);
+  let tasks = null;
+  if (props.tasks) {
+    tasks = <div className='inner-container'>{props.tasks.map(task => <IncomingTask key={`${task.id}`} text={task.text} category={task.category} location={task.location} date={task.date}/>)} </div>
+  }
+
   return (
     <div className='incoming-tasks-container'>
       <div className='fulfilled-tasks-container incoming-tasks-container-modificator'>
@@ -12,12 +18,7 @@ const IncomingTasks = (props) => {
         </div>
         <div className='fulfilled-tasks-container-quantity'>{props.incoming}</div>
       </div>
-      <div className='inner-container'>
-        <IncomingTask />
-        <IncomingTask />
-        <IncomingTask />
-        <IncomingTask />
-      </div>
+        {tasks}
     </div>
   );
 };

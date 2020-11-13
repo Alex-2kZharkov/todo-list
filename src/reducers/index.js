@@ -1,5 +1,5 @@
 export const tasks = (
-  state = JSON.parse(localStorage.getItem('tasks')),
+  state = JSON.parse(localStorage.getItem('tasks')) || '' ,
   action
 ) => {
   switch (action.type) {

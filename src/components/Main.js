@@ -23,12 +23,14 @@ const Main = () => {
   
   return (
     <div className='container'>
+      <div className='primary_inner_container'>
       <MainHeader percent={percent} tasks={tasks} business={business} personal={personal}/>
-      <IncomingTasks incoming={incoming} />
-      <FulfilledTasks fulfilled={fulfilled} />
+      <IncomingTasks tasks={tasks ? tasks.filter(task => !task.isDone) : null} incoming={incoming} />
+      <FulfilledTasks  fulfilled={fulfilled} />
       <Link to='/new-task'>
         <div className='new_task'></div>
       </Link>
+      </div>
     </div>
   );
 };
