@@ -26,7 +26,7 @@ const MainHeader = (props) => {
     style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #5F6587 50%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
   } else {
     let paintPercent = 90 + (180 * (props.percent - 50)) / 50;
-    style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #A598F9 50%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
+    style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #A598F9 25%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
   }
 
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hours: 'numeric', minutes: 'numeric'};

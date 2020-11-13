@@ -1,9 +1,15 @@
-import React from 'react';
+import {React, useState} from 'react';
 
 
 const IncomingTask = (props) => {
+  const [lineThroughClass, changeLineThroughClass] = useState(''), [riseShadowClass, changeRiseShadow] = useState(''), [hiddenTask, changeHiddneTask] = useState({});
   let transformedLocation;
 
+  const markAsFulfilled = () => {
+    changeLineThroughClass('line_through_text');
+    changeRiseShadow('flash_border');
+    setTimeout(() => changeHiddneTask({display: 'none'}), 2000);
+  }
   if (props.location.includes(' ') ) {
     let lastSpace = props.location.lastIndexOf(' ');
     transformedLocation = `${props.location.slice(0, lastSpace)} ,${props.location.slice(lastSpace)}`; // inserts comma
@@ -13,14 +19,14 @@ const IncomingTask = (props) => {
   let date = new Date(year, month - 1, day).toLocaleDateString('ru', { year: 'numeric', month: 'long', day: 'numeric'});
 
   return (
-    <div className='task'>
-      <div className='task-icon-container'>
+    <div className='task' style={hiddenTask}>
+      <div className={`task-icon-container ${riseShadowClass}`}>
         <img src={process.env.PUBLIC_URL + `/images/${props.category}_darker.jpg`} className='task-icon' alt='icon' />
       </div>
       <div className='task_information'>
-        <div className='task-text'>
+        <p className={`task-text ${lineThroughClass}`} onClick={markAsFulfilled}>
           {props.text}
-        </div>
+        </p>
         <div className='task-location'>{transformedLocation}</div>
       </div>
       <div className='task_date_created'>

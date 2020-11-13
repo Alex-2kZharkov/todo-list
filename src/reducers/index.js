@@ -12,7 +12,7 @@ export const tasks = (
           location: action.payload.location,
           text: action.payload.text,
           date: action.payload.date.split(' '),
-          isDone: true,
+          isDone: false,
         });
         state = startTask;
       } else {
@@ -22,7 +22,7 @@ export const tasks = (
           location: action.payload.location,
           text: action.payload.text,
           date: action.payload.date.split(' '),
-          isDone: true,
+          isDone: false,
         });
       }
   
