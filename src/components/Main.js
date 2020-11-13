@@ -8,11 +8,11 @@ import { useSelector} from 'react-redux';
 
 
 const Main = () => {
-  const tasks = useSelector(state => state.tasks);
+  const tasks = ''; //useSelector(state => state.tasks)
   let incomingTasks = tasks ? tasks.filter(task => !task.isDone) : null;
   let fulfilledTasks = tasks ? tasks.filter(task => task.isDone) : null;
 
-  const percent = Math.round((100 * fulfilledTasks.length) / tasks.length), 
+  const percent = tasks ? Math.round((100 * fulfilledTasks.length) / tasks.length) : 0, 
   incoming  = incomingTasks ? incomingTasks.length : 0, fulfilled = fulfilledTasks ? fulfilledTasks.length : 0,
   business = tasks ? tasks.reduce((accumulator, current) => current.category.includes('office') ? ++accumulator : accumulator, 0) : 0;
   const personal = tasks.length - business;
@@ -25,7 +25,7 @@ const Main = () => {
       <MainHeader percent={percent} tasks={tasks} business={business} personal={personal}/>
       <IncomingTasks tasks={incomingTasks} incoming={incoming} />
       <FulfilledTasks tasks={fulfilledTasks} fulfilled={fulfilled} />
-      <Link to='/new-task'>
+      <Link to='/new-task' className='new_task_container'>
         <div className='new_task'></div>
       </Link>
       </div>

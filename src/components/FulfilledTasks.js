@@ -4,7 +4,7 @@ import './Main.css';
 
 const FulfilledTasks = (props) => {
   return (
-    <div className='incoming-tasks-container'>
+    <div className='incoming-tasks-container tasks_padding_modificator'>
       <div className='fulfilled-tasks-container'>
         <div className='tasks-title fulfilled-tasks-container-title'>
           Выполненные
