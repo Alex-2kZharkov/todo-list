@@ -27,7 +27,7 @@ export const countBusinessTasks = (tasks) => {
 
 export const countPersonalTasks = (tasks) => {
     return {
-        type: 'COUNT_INCOMING',
+        type: 'COUNT_PERSONAL',
         payload: tasks
     }
 }

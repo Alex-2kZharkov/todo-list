@@ -5,7 +5,7 @@ import IncomingTasks from './IncominTasks';
 import {Link} from 'react-router-dom'
 import FulfilledTasks from './FulfilledTasks';
 import {useDispatch, useSelector} from 'react-redux';
-import {countFulfilledPercent, countIncomingTasks, countBusinessTasks} from '../actions/countStat'
+import {countFulfilledPercent, countIncomingTasks, countBusinessTasks, countPersonalTasks, countFulfilledTasks} from '../actions/countStat'
 
 const Main = () => {
   const tasks = useSelector(state => state.tasks);
@@ -13,11 +13,13 @@ const Main = () => {
   const dispatch = useDispatch();
   dispatch(countFulfilledPercent(tasks));
   dispatch(countIncomingTasks(tasks));
+  dispatch(countPersonalTasks(tasks));
+  dispatch(countFulfilledTasks(tasks));
   dispatch(countBusinessTasks(tasks));
 
   const percent = useSelector(state => state.fulfilledPercent), 
-  incoming  = useSelector(state => state.incomingNumber), fulfilled = tasks.length - incoming,
-  business = useSelector(state => state.businessNumber), personal = tasks.length - business;
+  incoming  = useSelector(state => state.incomingNumber), fulfilled = useSelector(state => state.fulfilledNumber),
+  business = useSelector(state => state.businessNumber), personal = useSelector(state => state.personalNumber);
 
   console.log(tasks);
   
