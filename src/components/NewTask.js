@@ -27,7 +27,7 @@ const NewTask = () => {
 
     };
     const onAddButtonClick = (e) => {
-      console.log(e);
+
       e.preventDefault();
       dispatch(addTask({
         category: taskCategory,

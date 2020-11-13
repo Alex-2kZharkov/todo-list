@@ -8,7 +8,7 @@ import { useSelector} from 'react-redux';
 
 
 const Main = () => {
-  const tasks = ''; //useSelector(state => state.tasks)
+  const tasks = useSelector(state => state.tasks);
   let incomingTasks = tasks ? tasks.filter(task => !task.isDone) : null;
   let fulfilledTasks = tasks ? tasks.filter(task => task.isDone) : null;
 

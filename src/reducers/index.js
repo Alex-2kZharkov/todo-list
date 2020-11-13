@@ -27,7 +27,6 @@ export const tasks = (
       }
   
       localStorage.setItem('tasks', JSON.stringify(state));
-      console.log(JSON.parse(localStorage.getItem('tasks')));
       return state;
     }
     default:
