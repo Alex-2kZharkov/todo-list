@@ -125,7 +125,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: solid 1px #E5E5E5;
+    border: solid 1px #E5E5E5; 
     box-sizing: border-box;   
   }
  
@@ -219,12 +219,12 @@
     text-decoration: none;
     background-color:  #2EBAEE;
     box-shadow: -2px 9px 60px #2EBAEE;
+    transition: 0.3s ease-in-out box-shadow,0.3s ease-in-out  background, 0.3s ease-in-out cursor;
 }
 .new_task:hover {
     box-shadow: -2px 9px 60px #2eaaee;
     background: #2eaaee;
-    cursor: pointer;
-    transition: 0.3s ease-in-out box-shadow,0.3s ease-in-out  background, 0.3s ease-in-out cursor;
+    cursor: pointer;    
 }
 .new_task::before {
     content: '';
