@@ -1,9 +1,25 @@
-import React from 'react';
+import {React, useRef} from 'react';
 import './Main.css';
+
+
 
 const MainHeader = (props) => {
 
-  let style = { backgroundColor: '#A598F9' };
+  const inputEl = useRef(null);
+
+  const generateTime = () => {
+    // console.log(inputEl.current);
+
+    let today = new Date();
+    let h = today.getHours(), m = today.getMinutes(), s = today.getSeconds();
+    if (m < 10) m = `0${m}`;
+    if (h < 10) h = `0${h}`;
+    if (s < 10) s = `0${s}`;
+
+    if (inputEl.current) inputEl.current.innerHTML = h + ":" + m + ":" + s
+    setTimeout(generateTime, 500);
+  }
+  let style = { backgroundColor: '#A598F9' }; 
 
   if (props.percent <= 50) {
     let paintPercent = 90 + (180 * props.percent) / 50;
@@ -22,6 +38,7 @@ const MainHeader = (props) => {
       <div className='title_column'>
         <div className='title'>Ваши задачи</div>
         <div className='today_date'>{dateStr}</div>
+        <div className='today_time' ref={inputEl}>{generateTime()}</div>
       </div>
       <div className='statistics_column'>
         <div className='tasks_types'>

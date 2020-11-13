@@ -30,12 +30,16 @@
     position: relative;
     min-width: 440px;
 }
-.today_date {
+.today_date, .today_time {
     position: absolute;
-    bottom: 33px;
+    bottom: 45px;
     left: 30px;
     color: #ffffff;
     opacity: 0.5;
+}
+.today_time {
+    left: 172px;
+    bottom: 25px;
 }
 .statistics_column {
     position: relative;
