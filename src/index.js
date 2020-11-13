@@ -6,8 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { tasks } from './reducers';
+import {offset} from './reducers/offset'
 
-const allReducers = combineReducers({ tasks});
+const allReducers = combineReducers({ tasks, offset});
 let store = createStore(allReducers);
 
 ReactDOM.render(

@@ -16,8 +16,6 @@ const Main = () => {
   incoming  = incomingTasks ? incomingTasks.length : 0, fulfilled = fulfilledTasks ? fulfilledTasks.length : 0,
   business = tasks ? tasks.reduce((accumulator, current) => current.category.includes('office') ? ++accumulator : accumulator, 0) : 0;
   const personal = tasks.length - business;
-
-  console.log(tasks);
   
   return (
     <div className='container'>

@@ -4,7 +4,6 @@ import './Main.css';
 
 const IncomingTasks = (props) => {
  
-  console.log(props.tasks);
   let tasks = null;
   if (props.tasks) {
     tasks = <div className='inner-container'>{props.tasks.map(task => <IncomingTask key={`${task.id}`} text={task.text} category={task.category} location={task.location} date={task.date}/>)} </div>
