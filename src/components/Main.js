@@ -4,22 +4,18 @@ import MainHeader from './MainHeader';
 import IncomingTasks from './IncominTasks';
 import {Link} from 'react-router-dom'
 import FulfilledTasks from './FulfilledTasks';
-import {useDispatch, useSelector} from 'react-redux';
-import {countFulfilledPercent, countIncomingTasks, countBusinessTasks, countPersonalTasks, countFulfilledTasks} from '../actions/countStat'
+import { useSelector} from 'react-redux';
+
 
 const Main = () => {
   const tasks = useSelector(state => state.tasks);
+  let incomingTasks = tasks ? tasks.filter(task => !task.isDone) : null;
+  let fulfilledTasks = tasks ? tasks.filter(task => task.isDone) : null;
 
-  const dispatch = useDispatch();
-  dispatch(countFulfilledPercent(tasks));
-  dispatch(countIncomingTasks(tasks));
-  dispatch(countPersonalTasks(tasks));
-  dispatch(countFulfilledTasks(tasks));
-  dispatch(countBusinessTasks(tasks));
-
-  const percent = useSelector(state => state.fulfilledPercent), 
-  incoming  = useSelector(state => state.incomingNumber), fulfilled = useSelector(state => state.fulfilledNumber),
-  business = useSelector(state => state.businessNumber), personal = useSelector(state => state.personalNumber);
+  const percent = Math.round((100 * fulfilledTasks.length) / tasks.length), 
+  incoming  = incomingTasks ? incomingTasks.length : 0, fulfilled = fulfilledTasks ? fulfilledTasks.length : 0,
+  business = tasks ? tasks.reduce((accumulator, current) => current.category.includes('office') ? ++accumulator : accumulator, 0) : 0;
+  const personal = tasks.length - business;
 
   console.log(tasks);
   
@@ -27,8 +23,8 @@ const Main = () => {
     <div className='container'>
       <div className='primary_inner_container'>
       <MainHeader percent={percent} tasks={tasks} business={business} personal={personal}/>
-      <IncomingTasks tasks={tasks ? tasks.filter(task => !task.isDone) : null} incoming={incoming} />
-      <FulfilledTasks  fulfilled={fulfilled} />
+      <IncomingTasks tasks={incomingTasks} incoming={incoming} />
+      <FulfilledTasks tasks={fulfilledTasks} fulfilled={fulfilled} />
       <Link to='/new-task'>
         <div className='new_task'></div>
       </Link>
