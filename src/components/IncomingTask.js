@@ -1,12 +1,14 @@
 import {React, useState, useRef} from 'react';
-import {useSelector} from 'react-redux'
+import {markAsDone} from '../actions'
+import {useSelector, useDispatch} from 'react-redux'
 
 
 const IncomingTask = (props) => {
 
-  const [lineThroughClass, changeLineThroughClass] = useState(''), [riseShadowClass, changeRiseShadow] = useState(''), [hiddenTask, changeHiddneTask] = useState({});
+  const [lineThroughClass, changeLineThroughClass] = useState(''), [riseShadowClass, changeRiseShadow] = useState(''), [hiddenTask, changeHiddenTask] = useState({});
   let transformedLocation, offsetY = 0, fulfilledTaskOffset = useSelector(state => state.offset);
   const taskRef = useRef(null);
+  const  dispatch = useDispatch();
 
   const showRef = () => {
     while(taskRef.current) {
@@ -18,7 +20,12 @@ const IncomingTask = (props) => {
   const markAsFulfilled = () => {
     changeLineThroughClass('line_through_text');
     changeRiseShadow('flash_border');
-    setTimeout(() => changeHiddneTask({transform: `translateY(${fulfilledTaskOffset - offsetY}px)`, transition: '1s ease-in-out transform'}), 2000);
+
+    const changeStatusLocation = () => {
+      changeHiddenTask({transform: `translateY(${fulfilledTaskOffset - offsetY}px)`, transition: '1s ease-in-out transform'})
+      dispatch(markAsDone(props.id))
+    }
+    setTimeout(changeStatusLocation, 2000);
   }
   if (props.location.includes(' ') ) {
     let lastSpace = props.location.lastIndexOf(' ');

@@ -8,9 +8,7 @@ export const addTask = (taskInfo) => {
 export const removeTask = (id) => {
   return {
     type: 'REMOVE_TASK',
-    payload: {
-      id,
-    },
+    payload: id
   };
 };
 
@@ -24,9 +22,7 @@ export const updateTask = (taskInfo) => {
 export const markAsDone = (id) => {
   return {
     type: 'MARK_TASK_AS_DONE',
-    payload: {
-      id,
-    },
+    payload: id
   };
 };
 
