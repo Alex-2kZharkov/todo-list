@@ -20,7 +20,7 @@ const FulfilledTasks = (props) => {
   })
 
   return (
-    <div className='incoming-tasks-container tasks_padding_modificator' ref={containerRef}>
+    <div  className='incoming-tasks-container tasks_padding_modificator' ref={containerRef}>
       <div className='fulfilled-tasks-container' style={marginOffset}>
         <div className='tasks-title fulfilled-tasks-container-title'>
           Выполненные

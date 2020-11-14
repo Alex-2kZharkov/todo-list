@@ -1,4 +1,4 @@
-import React from 'react';
+import {React} from 'react';
 import './Main.css';
 import MainHeader from './MainHeader';
 import IncomingTasks from './IncominTasks';
@@ -24,7 +24,7 @@ const Main = () => {
       <div className='primary_inner_container'>
       <MainHeader percent={percent} tasks={tasks} business={business} personal={personal}/>
       <IncomingTasks tasks={incomingTasks} incoming={incoming} />
-      <FulfilledTasks tasks={fulfilledTasks} fulfilled={fulfilled} />
+      <FulfilledTasks  tasks={fulfilledTasks} fulfilled={fulfilled} />
       <Link to='/new-task' className='new_task_container'>
         <div className='new_task'></div>
       </Link>

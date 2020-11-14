@@ -1,10 +1,12 @@
-import {React, useState} from 'react';
+import {React, useState, useRef, useEffect} from 'react';
 import IncomingTask from './IncomingTask';
 import './Main.css';
 
 const IncomingTasks = (props) => {
  
-  const [hideTasks, changeHideClass] = useState(''), 
+
+  const tasksRef = useRef(null);
+  const [hideTasks, changeHideClass] = useState({}), 
   [styleArrow, changeStyleArrow] = useState('');
 
   let tasks = null;
@@ -12,14 +14,29 @@ const IncomingTasks = (props) => {
     tasks = <div className='inner-container'>{props.tasks.map(task => <IncomingTask key={`${task.id}`} id={task.id} text={task.text} category={task.category} location={task.location} date={task.date}/>)} </div>
   }
 
-  const toggleClasses = () => {
-    console.log('click');
+
+  const toggleStyles = () => {
+  
     if(styleArrow) {
-      changeHideClass('show_incoming_tasks');
+    
+      changeHideClass({
+        display: 'block',
+        opacity: '0',
+        transition: '0s ease-in-out opacity'
+      });
+     
+      setTimeout(() => changeHideClass({
+        opacity: '1',
+        transition: '1s ease-in-out opacity'
+      }), 1 );
       changeStyleArrow('');
+
     } else {
-      changeHideClass('hide_incoming_tasks');
-      setTimeout(() => changeHideClass('hide_incoming_tasks2'), 1000);
+      changeHideClass({
+        opacity: '0',
+        transition: '0.5s ease-in-out opacity'
+      });
+      setTimeout(() =>changeHideClass({display: 'none'}), 500 );
       changeStyleArrow('style_arrow');
     }
   }
@@ -30,9 +47,9 @@ const IncomingTasks = (props) => {
           Входящие
         </div>
         <div className='fulfilled-tasks-container-quantity'>{props.incoming}</div>
-        <div className='select_arrow arrow_moficator' id={`${styleArrow}`} onClick={toggleClasses}></div>
+        <div className='select_arrow arrow_moficator' id={`${styleArrow}`} onClick={toggleStyles}></div>
       </div>
-       <div className={`${hideTasks}`}> {tasks}</div>
+       <div ref={tasksRef} style={hideTasks} > {tasks}</div>
     </div>
   );
 };
