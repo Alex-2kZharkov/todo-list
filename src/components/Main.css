@@ -177,6 +177,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition:  0.3s ease-in-out background-color, 0.3s ease-in-out transform;
+  }
+  .control_button:hover {
+    background: #F0C453; 
+    cursor: pointer;
+    transform: rotate(360deg);
+    transition:  0.3s ease-in-out background-color, 0.3s ease-in-out transform;
   }
   .edit_button_container {
       position: relative;
@@ -327,4 +334,24 @@
     100% {
         box-shadow: 0px 0px 10px transparent, 0px 0px 10px transparent, 0px 0px 10px transparent, 0px 0px 10px transparent;
     } 
+}
+
+/*removing animation*/
+
+.remove_task_anim {
+    animation: removed-item-animation 1s cubic-bezier(0.55, -0.04, 0.91, 0.94) forwards;
+    /*transform origin is moved to the bottom left corner*/
+    transform-origin: 0% 100%;
+}
+ 
+@keyframes removed-item-animation {
+    0% {
+        opacity: 1;
+        transform: rotateZ(0);
+}
+ 
+    100% {
+        opacity: 0;
+        transform: translateY(600px) rotateZ(90deg);
+    }
 }
