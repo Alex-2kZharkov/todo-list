@@ -143,8 +143,10 @@
   .task-text {
       font-size: 16px;
       margin-bottom: 5px;
-      text-decoration: line-through;
-      
+    
+  }
+  .task-text-modificator {
+    text-decoration: line-through;
   }
   .task-location {
     font-size: 14px;

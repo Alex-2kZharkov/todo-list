@@ -25,7 +25,7 @@ const FulfilledTask = (props) => {
         </div>
       </div>
       <div className='task_information'>
-        <div className='task-text'>
+        <div className='task-text task-text-modificator'>
           {props.text}
         </div>
         <div className='task-location'>{transformedLocation}</div>

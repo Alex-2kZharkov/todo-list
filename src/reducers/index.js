@@ -29,14 +29,24 @@ export const tasks = (
       localStorage.setItem('tasks', JSON.stringify(state));
       return state;
     }
+
     case 'MARK_TASK_AS_DONE': {
       let index = state.findIndex((item) => item.id === action.payload)
-      let [updated] = state.splice(index, 1)
+      let [updated] = state.splice(index, 1);
       updated.isDone = true;
       state = [].concat(updated, state);
       localStorage.setItem('tasks', JSON.stringify(state));
       return state ;
     }
+
+    case 'REMOVE_TASK': {
+      let index = state.findIndex((item) => item.id === action.payload)
+      state.splice(index, 1);
+      state = [].concat(state);
+      localStorage.setItem('tasks', JSON.stringify(state));
+      return state ;
+    }
+
     default:
       return state;
   }

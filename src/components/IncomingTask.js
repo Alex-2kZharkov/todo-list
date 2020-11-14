@@ -1,5 +1,5 @@
 import {React, useState, useRef} from 'react';
-import {markAsDone} from '../actions'
+import {markAsDone, removeTask} from '../actions'
 import {useSelector, useDispatch} from 'react-redux'
 import { countMargin } from '../actions/countOffset';
 
@@ -35,6 +35,7 @@ const IncomingTask = (props) => {
 
   const onRemoveClick = () => {
     changeRemovingAnimation('remove_task_anim');
+    setTimeout(() => dispatch(removeTask(props.id)), 1000);
   }
 
   if (props.location.includes(' ') ) {
