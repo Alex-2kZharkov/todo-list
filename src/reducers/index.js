@@ -7,7 +7,7 @@ export const tasks = (
       if (!state) {
         let startTask = [];
         startTask.push({
-          id: startTask.length + 1,
+          id: Date.now(),
           category: action.payload.category,
           location: action.payload.location,
           text: action.payload.text,
@@ -17,7 +17,7 @@ export const tasks = (
         state = startTask;
       } else {
         state.push({
-          id: Number(state[state.length-1].id) + 1,
+          id: Date.now(),
           category: action.payload.category,
           location: action.payload.location,
           text: action.payload.text,
@@ -30,15 +30,11 @@ export const tasks = (
       return state;
     }
     case 'MARK_TASK_AS_DONE': {
-      let index = state.indexOf((item) => item.id === action.payload)
-      let updated = state.splice(index, 1)
-      updated[0].isDone = true;
-      let temp = state.slice(0, state.unshift(updated[0]));
-      state = temp;
-
+      let index = state.findIndex((item) => item.id === action.payload)
+      let [updated] = state.splice(index, 1)
+      updated.isDone = true;
+      state = [].concat(updated, state);
       localStorage.setItem('tasks', JSON.stringify(state));
-      //state = JSON.parse(localStorage.getItem('tasks'));
-      console.log('!!!!!!!!!!!!!!!!!!',updated[0]);
       return state ;
     }
     default:

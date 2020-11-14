@@ -5,3 +5,9 @@ export const countOffset = (node) => {
     };
   };
   
+  export const countMargin = (height) => {
+    return {
+      type: 'COUNT_MARGIN',
+      payload: height,
+    };
+  };

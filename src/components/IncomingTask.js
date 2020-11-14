@@ -1,6 +1,7 @@
 import {React, useState, useRef} from 'react';
 import {markAsDone} from '../actions'
 import {useSelector, useDispatch} from 'react-redux'
+import { countMargin } from '../actions/countOffset';
 
 
 const IncomingTask = (props) => {
@@ -11,9 +12,12 @@ const IncomingTask = (props) => {
   const  dispatch = useDispatch();
 
   const showRef = () => {
-    while(taskRef.current) {
-      offsetY += taskRef.current.offsetTop;
-      taskRef.current = taskRef.current.offsetParent;
+    
+    let taskRefCopy = taskRef.current;
+
+    while(taskRefCopy) {
+      offsetY += taskRefCopy.offsetTop;
+      taskRefCopy = taskRefCopy.offsetParent;
   }
   }
 
@@ -22,8 +26,12 @@ const IncomingTask = (props) => {
     changeRiseShadow('flash_border');
 
     const changeStatusLocation = () => {
-      changeHiddenTask({transform: `translateY(${fulfilledTaskOffset - offsetY}px)`, transition: '1s ease-in-out transform'})
-      dispatch(markAsDone(props.id))
+      changeHiddenTask({transform: `translateY(${fulfilledTaskOffset - offsetY}px)`, transition: '1s ease-in-out transform'});
+      dispatch(countMargin(taskRef.current.clientHeight + 30));
+      setTimeout(() => {
+        dispatch(markAsDone(props.id));
+        dispatch(countMargin(0));
+      }, 1000);
     }
     setTimeout(changeStatusLocation, 2000);
   }

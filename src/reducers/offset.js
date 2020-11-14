@@ -6,10 +6,11 @@ export const offset = (state = 0, action) => {
             offsetY += action.payload.offsetTop;
             action.payload = action.payload.offsetParent;
         }
-        console.log(offsetY + 75)
         return state = offsetY + 75;
       }
       default:
         return state;
     }
   };
+
+  

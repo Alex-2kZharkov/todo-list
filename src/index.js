@@ -7,8 +7,9 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { tasks } from './reducers';
 import {offset} from './reducers/offset'
+import {margin} from './reducers/margin'
 
-const allReducers = combineReducers({ tasks, offset});
+const allReducers = combineReducers({ tasks, offset, margin});
 let store = createStore(allReducers);
 
 ReactDOM.render(
