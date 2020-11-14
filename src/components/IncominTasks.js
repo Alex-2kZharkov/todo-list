@@ -1,11 +1,9 @@
-import {React, useState, useRef, useEffect} from 'react';
+import {React, useState} from 'react';
 import IncomingTask from './IncomingTask';
 import './Main.css';
 
 const IncomingTasks = (props) => {
  
-
-  const tasksRef = useRef(null);
   const [hideTasks, changeHideClass] = useState({}), 
   [styleArrow, changeStyleArrow] = useState('');
 
@@ -13,7 +11,6 @@ const IncomingTasks = (props) => {
   if (props.tasks) {
     tasks = <div className='inner-container'>{props.tasks.map(task => <IncomingTask key={`${task.id}`} id={task.id} text={task.text} category={task.category} location={task.location} date={task.date}/>)} </div>
   }
-
 
   const toggleStyles = () => {
   
@@ -40,6 +37,7 @@ const IncomingTasks = (props) => {
       changeStyleArrow('style_arrow');
     }
   }
+
   return (
     <div className='incoming-tasks-container'>
       <div className='fulfilled-tasks-container incoming-tasks-container-modificator'>
@@ -49,7 +47,7 @@ const IncomingTasks = (props) => {
         <div className='fulfilled-tasks-container-quantity'>{props.incoming}</div>
         <div className='select_arrow arrow_moficator' id={`${styleArrow}`} onClick={toggleStyles}></div>
       </div>
-       <div ref={tasksRef} style={hideTasks} > {tasks}</div>
+       <div  style={hideTasks} > {tasks}</div>
     </div>
   );
 };

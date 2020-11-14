@@ -1,5 +1,5 @@
 
-import {React, useEffect, useRef} from 'react';
+import {React, useEffect, useState, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {countOffset} from '../actions/countOffset'
 import FulfilledTask from './FulfilledTask';
@@ -7,6 +7,8 @@ import './Main.css';
 
 const FulfilledTasks = (props) => {
 
+  const [hideTasks, changeHideClass] = useState({}), 
+  [styleArrow, changeStyleArrow] = useState('');
   const containerRef = useRef(null);
   const marginOffset = useSelector(state => state.margin);
   let tasks = null;
@@ -19,6 +21,32 @@ const FulfilledTasks = (props) => {
     dispatch(countOffset(containerRef.current));
   })
 
+  const toggleStyles = () => {
+  
+    if(styleArrow) {
+    
+      changeHideClass({
+        display: 'block',
+        opacity: '0',
+        transition: '0s ease-in-out opacity'
+      });
+     
+      setTimeout(() => changeHideClass({
+        opacity: '1',
+        transition: '1s ease-in-out opacity'
+      }), 1 );
+      changeStyleArrow('');
+
+    } else {
+      changeHideClass({
+        opacity: '0',
+        transition: '0.5s ease-in-out opacity'
+      });
+      setTimeout(() =>changeHideClass({display: 'none'}), 500 );
+      changeStyleArrow('style_arrow');
+    }
+  }
+  
   return (
     <div  className='incoming-tasks-container tasks_padding_modificator' ref={containerRef}>
       <div className='fulfilled-tasks-container' style={marginOffset}>
@@ -26,8 +54,9 @@ const FulfilledTasks = (props) => {
           Выполненные
         </div>
         <div className='fulfilled-tasks-container-quantity'>{props.fulfilled}</div>
+        <div className='select_arrow arrow_moficator' id={`${styleArrow}`} onClick={toggleStyles}></div>
       </div>
-      <div className='inner-container'>
+      <div  style={hideTasks} className='inner-container'>
       {tasks}
       </div>
     </div>
