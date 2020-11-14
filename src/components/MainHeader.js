@@ -7,7 +7,7 @@ const MainHeader = (props) => {
 
   const inputEl = useRef(null);
   let style = { backgroundColor: '#A598F9' }; 
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hours: 'numeric', minutes: 'numeric'};
+  const options = {  year: 'numeric', month: 'long', day: 'numeric', hours: 'numeric', minutes: 'numeric'};
   let dateStr = new Date().toLocaleDateString('ru', options);
   
   const generateTime = () => {
