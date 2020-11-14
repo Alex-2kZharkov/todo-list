@@ -63,8 +63,8 @@ const IncomingTask = (props) => {
       </div>
       <div className='control_buttons'>
         <button className='control_button edit_button_container' ></button>
-        <button className='control_button delete_button_container' onClick={onRemoveClick}></button>
         <button className='control_button done_button_container' onClick={markAsFulfilled}></button>
+        <button className='control_button delete_button_container' onClick={onRemoveClick}></button>
       </div>
     </div>
   );

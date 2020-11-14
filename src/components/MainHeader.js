@@ -6,9 +6,11 @@ import './Main.css';
 const MainHeader = (props) => {
 
   const inputEl = useRef(null);
-
+  let style = { backgroundColor: '#A598F9' }; 
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hours: 'numeric', minutes: 'numeric'};
+  let dateStr = new Date().toLocaleDateString('ru', options);
+  
   const generateTime = () => {
-    // console.log(inputEl.current);
 
     let today = new Date();
     let h = today.getHours(), m = today.getMinutes(), s = today.getSeconds();
@@ -19,7 +21,6 @@ const MainHeader = (props) => {
     if (inputEl.current) inputEl.current.innerHTML = h + ":" + m + ":" + s
     setTimeout(generateTime, 500);
   }
-  let style = { backgroundColor: '#A598F9' }; 
 
   if (props.percent <= 50) {
     let paintPercent = 90 + (180 * props.percent) / 50;
@@ -29,8 +30,7 @@ const MainHeader = (props) => {
     style.backgroundImage = `linear-gradient(${paintPercent}deg, transparent 50%, #A598F9 25%), linear-gradient(90deg, #5F6587 50%, transparent 50%`;
   }
 
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hours: 'numeric', minutes: 'numeric'};
-  let dateStr = new Date().toLocaleDateString('ru', options);
+ 
   dateStr = dateStr[0].toLocaleUpperCase('ru') + dateStr.slice(1);
 
   return (
