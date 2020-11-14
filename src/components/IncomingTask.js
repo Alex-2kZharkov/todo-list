@@ -3,9 +3,10 @@ import {markAsDone, removeTask} from '../actions'
 import {useSelector, useDispatch} from 'react-redux'
 import { countMargin } from '../actions/countOffset';
 
-
 const IncomingTask = (props) => {
 
+  let [day, month, year] = props.date[0].split("-")
+  let date = new Date(year, month - 1, day).toLocaleDateString('ru', { year: 'numeric', month: 'long', day: 'numeric'});
   const [lineThroughClass, changeLineThroughClass] = useState(''), [riseShadowClass, changeRiseShadow] = useState(''), 
   [hiddenTask, changeHiddenTask] = useState({}), [removingAnimation, changeRemovingAnimation] = useState('');
   let transformedLocation, offsetY = 0, fulfilledTaskOffset = useSelector(state => state.offset);
@@ -42,9 +43,6 @@ const IncomingTask = (props) => {
     let lastSpace = props.location.lastIndexOf(' ');
     transformedLocation = `${props.location.slice(0, lastSpace)} ,${props.location.slice(lastSpace)}`; // inserts comma
   } else transformedLocation = props.location;
-
-  let [day, month, year] = props.date[0].split("-")
-  let date = new Date(year, month - 1, day).toLocaleDateString('ru', { year: 'numeric', month: 'long', day: 'numeric'});
 
   return (
     <div className={`task ${removingAnimation}`} style={hiddenTask} ref={taskRef} >
