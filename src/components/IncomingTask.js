@@ -58,6 +58,11 @@ const IncomingTask = (props) => {
         <div className='task_date'>{date}</div>
         <div className='task_time'>19:10</div>
       </div>
+      <div className='control_buttons'>
+        <button className='control_button edit_button_container'></button>
+        <button className='control_button delete_button_container'></button>
+        <button className='control_button done_button_container'></button>
+      </div>
     </div>
   );
 };

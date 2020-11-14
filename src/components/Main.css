@@ -108,13 +108,14 @@
     color: #898C9C;
 }
 .task {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-left: 30px;
     margin-right: 37px;
     margin-top: 25px;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
     border-bottom: solid 1px #A8A8A8;
 }
 .task-icon-container {
@@ -161,6 +162,67 @@
   .task_time {
       justify-self: flex-end;
       padding-right: 5px;
+  }
+  /*BUTTONS*/
+  .control_buttons {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 7px;
+    right: 0px;
+    border: soild 2px #000000;
+  }
+  .control_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .edit_button_container {
+      position: relative;
+      background: linear-gradient(380deg, #A598F9, #5671CC);
+  }
+  .edit_button_container::after {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-image: url('../images/pencil.png');
+    background-size: 25px 25px;
+  }
+  .delete_button_container {
+    background: linear-gradient(405deg, #FF3366, #FF6C6C); /*    background: linear-gradient(380deg, #FF3366, #FF6C6C);*/
+}
+.delete_button_container::after {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-image: url('../images/delete.png');
+    background-size: 25px 25px;
+    
+  }
+.done_button_container {
+    background: linear-gradient(#232160 30%, #A598F9);
+}
+.done_button_container::after {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-image: url('../images/check.png');
+    background-size: 25px 25px;
+  }
+  .control_button {
+      width: 40px;
+      height: 40px;
+      outline: none;
+      border: none;
+      border-radius: 50%;
+      margin-right: 10px;
+  }
+  .control_button:last-child {
+      margin-right: 0px;
   }
   .fulfilled-tasks-container {
       display: grid;
