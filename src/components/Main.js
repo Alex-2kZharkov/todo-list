@@ -1,4 +1,4 @@
-import {React} from 'react';
+import {React, useState} from 'react';
 import './Main.css';
 import MainHeader from './MainHeader';
 import IncomingTasks from './IncominTasks';
@@ -16,16 +16,17 @@ const Main = () => {
   incoming  = incomingTasks ? incomingTasks.length : 0, fulfilled = fulfilledTasks ? fulfilledTasks.length : 0,
   business = tasks ? tasks.reduce((accumulator, current) => current.category.includes('office') ? ++accumulator : accumulator, 0) : 0;
   const personal = tasks.length - business;
-  
+  const [hideTasks, changeHideClass] = useState({}); 
+  const [addButtonPos, changeaddButtonPos] = useState({ transition: '0.5s ease-in-out bottom'}); 
   if (isNaN(percent)) percent = 0;
 
   return (
     <div className='container'>
       <div className='primary_inner_container'>
       <MainHeader percent={percent} tasks={tasks} business={business} personal={personal}/>
-      <IncomingTasks tasks={incomingTasks} incoming={incoming} />
-      <FulfilledTasks  tasks={fulfilledTasks} fulfilled={fulfilled} />
-      <Link to='/new-task' className='new_task_container'>
+      <IncomingTasks changeaddButtonPos={changeaddButtonPos} changeHideClass={changeHideClass} tasks={incomingTasks} incoming={incoming} />
+      <FulfilledTasks hideTasks={hideTasks} changeHideClass={changeHideClass} tasks={fulfilledTasks} fulfilled={fulfilled} />
+      <Link style={addButtonPos} to='/new-task' className='new_task_container'>
         <div className='new_task'></div>
       </Link>
       </div>

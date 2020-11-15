@@ -31,24 +31,25 @@ const FulfilledTasks = (props) => {
         transition: '0s ease-in-out opacity'
       });
      
-      setTimeout(() => changeHideClass({
+      setTimeout(() =>  changeHideClass({
         opacity: '1',
-        transition: '1s ease-in-out opacity'
+        transition: '0.6s ease-in-out opacity, 0.5s ease-in-out transform'
       }), 1 );
       changeStyleArrow('');
 
     } else {
       changeHideClass({
+        // transform: `translateY(-300px)`, 
         opacity: '0',
-        transition: '0.5s ease-in-out opacity'
+        transition: '0.5s ease-in-out opacity, 0.5s ease-in-out transform'
       });
-      setTimeout(() =>changeHideClass({display: 'none'}), 500 );
+      setTimeout(() => changeHideClass({display: 'none'}), 500 );
       changeStyleArrow('style_arrow');
     }
   }
   
   return (
-    <div  className='incoming-tasks-container tasks_padding_modificator' ref={containerRef}>
+    <div  style={props.hideTasks} className='incoming-tasks-container tasks_padding_modificator' ref={containerRef}>
       <div className='fulfilled-tasks-container' style={marginOffset}>
         <div className='tasks-title fulfilled-tasks-container-title'>
           Выполненные
