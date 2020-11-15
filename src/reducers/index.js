@@ -31,7 +31,7 @@ export const tasks = (
     }
 
     case 'MARK_TASK_AS_DONE': {
-      let index = state.findIndex((item) => item.id === action.payload)
+      let index = state.findIndex((item) => item.id === action.payload);
       let [updated] = state.splice(index, 1);
       updated.isDone = true;
       state = [].concat(updated, state);
@@ -44,6 +44,20 @@ export const tasks = (
       state.splice(index, 1);
       state = [].concat(state);
       localStorage.setItem('tasks', JSON.stringify(state));
+      return state ;
+    }
+    case 'UPDATE_TASK': {
+      let index = state.findIndex((item) => item.id === action.payload.id)
+      state[index] = {
+          id: action.payload.id,
+          category: action.payload.category,
+          location: action.payload.location,
+          text: action.payload.text,
+          date: action.payload.date.split(' '),
+          isDone: action.payload.isDone,
+      }
+      localStorage.setItem('tasks', JSON.stringify(state));
+      console.log(state[index]);
       return state ;
     }
 

@@ -18,14 +18,15 @@ const Main = () => {
   const personal = tasks.length - business;
   const [hideTasks, changeHideClass] = useState({}); 
   const [addButtonPos, changeaddButtonPos] = useState({ transition: '0.5s ease-in-out bottom'}); 
+  const [isIncomingClosed, changeIsIncomingClosed] = useState(false);
   if (isNaN(percent)) percent = 0;
-
+ 
   return (
     <div className='container'>
       <div className='primary_inner_container'>
       <MainHeader percent={percent} tasks={tasks} business={business} personal={personal}/>
-      <IncomingTasks changeaddButtonPos={changeaddButtonPos} changeHideClass={changeHideClass} tasks={incomingTasks} incoming={incoming} />
-      <FulfilledTasks hideTasks={hideTasks} changeHideClass={changeHideClass} tasks={fulfilledTasks} fulfilled={fulfilled} />
+      <IncomingTasks changeIsIncomingClosed={changeIsIncomingClosed} changeaddButtonPos={changeaddButtonPos} changeHideClass={changeHideClass} tasks={incomingTasks} incoming={incoming} />
+      <FulfilledTasks isIncomingClosed={isIncomingClosed} changeaddButtonPos={changeaddButtonPos} hideTasks={hideTasks} changeHideClass={changeHideClass} tasks={fulfilledTasks} fulfilled={fulfilled} />
       <Link style={addButtonPos} to='/new-task' className='new_task_container'>
         <div className='new_task'></div>
       </Link>

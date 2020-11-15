@@ -56,7 +56,7 @@
     opacity: 0.5;
 }
 .today_time {
-    left: 99px;
+    left: 95px;
     bottom: 25px;
 }
 .statistics_column {
@@ -396,4 +396,8 @@
 #style_arrow {
     transform: rotate(720deg);
     border-bottom-color: #F0C453;
+}
+
+.reduce_height {
+    height: 50px;
 }

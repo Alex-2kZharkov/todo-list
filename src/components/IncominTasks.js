@@ -17,6 +17,7 @@ const IncomingTasks = (props) => {
   
     if(styleArrow) {
     
+      props.changeIsIncomingClosed(false);
       changeHideClass({
         display: 'block',
         opacity: '1',
@@ -37,6 +38,7 @@ const IncomingTasks = (props) => {
       changeStyleArrow('');
 
     } else {
+      props.changeIsIncomingClosed(true);
       changeHideClass({
         opacity: '0',
         transition: '0.5s ease-in-out opacity'
@@ -46,7 +48,7 @@ const IncomingTasks = (props) => {
         transition: '0.5s ease-in-out transform'
       });
       props.changeaddButtonPos({
-        bottom: `${tasksRef.current.clientHeight+30}px`, 
+        bottom: `${tasksRef.current.clientHeight+20}px`, 
         transition: '0.5s ease-in-out bottom'
       })
      // setTimeout(() =>changeHideClass({display: 'none'}), 500 );

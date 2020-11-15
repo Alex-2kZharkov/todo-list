@@ -18,7 +18,7 @@ const MainHeader = (props) => {
     if (h < 10) h = `0${h}`;
     if (s < 10) s = `0${s}`;
 
-    if (inputEl.current) inputEl.current.innerHTML = h + ":" + m + ":" + s
+    if (inputEl.current) inputEl.current.innerHTML = h + ":" + m + ":" + s;
     setTimeout(generateTime, 500);
   }
 

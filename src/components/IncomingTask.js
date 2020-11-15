@@ -2,6 +2,7 @@ import {React, useState, useRef} from 'react';
 import {markAsDone, removeTask} from '../actions'
 import {useSelector, useDispatch} from 'react-redux'
 import { countMargin } from '../actions/countOffset';
+import { Link } from 'react-router-dom';
 
 const IncomingTask = (props) => {
 
@@ -60,7 +61,7 @@ const IncomingTask = (props) => {
         <div className='task_time'>{props.date[1]}</div>
       </div>
       <div className='control_buttons'>
-        <button className='control_button edit_button_container' ></button>
+        <Link to={`/update-task/${props.id}`} className='control_button edit_button_container' ></Link>
         <button className='control_button done_button_container' onClick={markAsFulfilled}></button>
         <button className='control_button delete_button_container' onClick={onRemoveClick}></button>
       </div>
