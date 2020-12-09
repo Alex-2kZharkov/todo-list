@@ -81,6 +81,25 @@
     margin-left: 48px;
     margin-right: 48px;
 }
+/*restyling date and time fields*/
+.new_task_date_wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.date-time-field {
+    position: relative;
+    flex-basis: 30px;
+}
+.date-time-field > input {
+    text-align: center;
+}
+.month-item {
+    flex-basis: 100px;
+}
+.year-item {
+    flex-basis: 70px;
+}
 .new_task_form_item {
    
     display: block;
@@ -107,8 +126,18 @@
    -moz-appearance: none;
    cursor: pointer;
 }
+.date-time-field:last-child:before {
+    position: absolute;
+    right: 56.5px;
+    top: -5px;
+    display: block;
+    content: ":";
+    font-size: 24px;
+    font-weight: 700;
+    color: #6D73AD;
+}
  /*arrows*/
-.select_arrow {
+.select-arrow {
     position: absolute;
     right: 0px;
     top: 12px;
@@ -120,11 +149,20 @@
     transform: rotate(180deg);
     pointer-events: none;
 }
+.month-arrow-modification {
+    top: 7px;
+}
+.month-item:hover .select-arrow, .select-arrow:hover {
+    transform: rotate(540deg);
+    border-bottom-color: #F0C453;
+    transition:  0.3s ease-in-out transform,0.3s ease-in-out border-color;
+}
 /*small circle*/
-.new_task_category_wrapper::before {
+
+.small-circle {
     position: absolute;
-    left: 100px;
-    top: 8px;
+    top: 6px;
+    left: 50px;
     content: '';
     display: block;
     width: 8px;
@@ -132,29 +170,29 @@
     border-radius: 50%;
     background-color: #F0C453;
 }
-
-
 .new_task_form_item::placeholder {
     color: #6D73AD; height: initial;
 }
-.new_task_category_wrapper:hover .select_arrow{
+.new_task_category_wrapper:hover .select-arrow{
    transform: rotate(540deg);
    border-bottom-color: #F0C453; 
-   transition:  0.3s ease-in-out transform,0.3s ease-in-out border-color;
+   transition:  0.3s ease-in-out transform, 0.3s ease-in-out border-color;
 }
 .new_task_category:hover , .new_task_form_item:focus {
     border-color: #F0C453;
     transition:  ease-in-out border-color;
 }
-
+.task_date {
+    justify-self: flex-end;
+}
 .new_task_text_wrapper, .new_task_location_wrapper, .new_task_date_wrapper {
     position: relative;
 }
 .times{
     display: none;
     position: absolute;
-    right: -1.5px;
-    top: 0px;
+    right: 0px;
+    top: -2px;
     width: 25px;
     height: 25px;
     cursor: pointer;

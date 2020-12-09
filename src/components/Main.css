@@ -7,12 +7,7 @@
 .primary_inner_container {
     width: 680px;
     position: relative;
-    -webkit-animation: conditionalOpen 1s normal forwards ease-in-out;
-    -moz-animation: conditionalOpen 1s normal forwards ease-in-out;
-    animation: conditionalOpen 1s normal forwards ease-in-out;
-    -webkit-transform-origin: 50% 0%;
-    -moz-transform-origin: 50% 0%;
-    transform-origin: 25% 0%;
+
 }
 @-webkit-keyframes conditionalOpen {
     from { transform: scaleY(0) }

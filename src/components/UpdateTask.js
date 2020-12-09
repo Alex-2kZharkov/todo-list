@@ -5,9 +5,8 @@ import { updateTask } from '../actions';
 import { useDispatch ,useSelector} from 'react-redux';
 
 const UpdateTask = (props) => {
-    console.log(props.match.params.id);
-
     let tasks = useSelector(state => state.tasks),
+    
     index = tasks.findIndex((item) => item.id === Number(props.match.params.id)),
     task  = tasks[index];
     tasks = null;
