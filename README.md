@@ -4,7 +4,7 @@
 - [Description](#description)
 - [Preview](#preview)
 - [How To Use](#how-to-use)
-- [Author info](#author)
+- [Author info](#author-info)
 
 ## Description
 
