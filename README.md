@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Simple ToDo List ✨
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
+- [Description](#description)
+- [Preview](#preview)
+- [How To Use](#how-to-use)
+- [Author info](#author)
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+I decided to develop this project to practice my skills one more time. Practice makes
+perfect as they say.
 
-### `yarn start`
+### What do I like about this project? 🔥
+* It has a good-looking design
+* I had an opportunity to design it in Figma (here comes the link https://www.figma.com/file/ln761zF8iavqNvK7oWZSay/To-Do-List?node-id=3%3A4)
+* I added some cool features which I've never done before. They are dynamic gradient progress
+  bar, gradient borders, and lots of great animations
+* I used Redux for this app and learned its basics
+* My ToDo List uses the localStorage to store user's data so there is no need for a server and database
+* I experimented with a select element and added a custom arrow for it so it matches an app's design
+* App counts the statistics
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### What I don't like about this project?🌧
+* The design of the app is not adaptive
+* The categories for ToDo are static and changes in the code
+* The localStorage has a limited size and can be exceeded
+* It was my first time using Redux and I think I could make some mistakes
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Preview
+|                      |                       |
+| :-----------------------------------: | :-----------------------------------: |
+| ![main page](src/images/screenshots/preview-1.png) | ![main page](src/images/screenshots/preview-2.png)|
+| ![main page](src/images/screenshots/preview-3.png) | ![main page](src/images/screenshots/preview-4.png)|
+| ![main page](src/images/screenshots/preview-5.png) | ![main page](src/images/screenshots/preview-6.png)
 
-### `yarn test`
+## How To Use
+Node.js must be installed on your PC.
+Then clone this project and run the command 'npm install' in its directory, because you need node modules.
+Run 'npm start' also in the project directory.
+You are good to go
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Author info
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Write to me at alexander.06.zharkov@gmail.com if you have any thoughts about this project or something like an internship/job offer
